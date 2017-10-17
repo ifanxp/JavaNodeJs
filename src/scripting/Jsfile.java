@@ -18,7 +18,7 @@ public class Jsfile {
         this.files = new HashMap<String, Object>();
 	}
 	
-	//╪стьjsнд╪Ч
+	//load js file
 	public Object loadJs(String filename) throws Exception
 	{
 		if (!this.files.containsKey(filename)) {
