@@ -21,15 +21,16 @@ public class Jsfile {
 	//load js file
 	public Object loadJs(String filename) throws Exception
 	{
-		if (!this.files.containsKey(filename)) {
-			String data = this._getJsContent(filename);
-			Object jsObject = this.engine.eval(data);
-			this.files.put(filename, jsObject);
+		if (this.files.containsKey(filename)) {
+			return this.files.get(filename);
 		}
-		return this.files.get(filename);
+
+		Object jsObject = this.engine.eval(_wrapJsContent(filename));
+		this.files.put(filename, jsObject);
+		return jsObject;
 	}
 	
-	private String _getJsContent(String filename) throws Exception
+	private String _wrapJsContent(String filename) throws Exception
 	{
 		StringBuffer content = new StringBuffer();
 		content.append("(function() {\n");
