@@ -1,5 +1,8 @@
 package scripting;
 import javax.script.*;
+
+import jdk.nashorn.api.scripting.JSObject;
+
 import java.util.Map;
 import java.util.HashMap;
 import java.io.FileReader;
@@ -9,7 +12,18 @@ public class Jsfile {
 	public ScriptEngineManager factory;
 	public ScriptEngine engine;
 	public Map<String, Object> files;
-
+	
+	public void printType(Object object)
+	{
+		System.out.println(object.getClass().getSimpleName());
+	}
+	
+	public void setTimeOut(int duration, JSObject callback, Object... args)
+	{
+		RunnableDemo R1 = new RunnableDemo( "Thread-1", duration, callback, args);
+		R1.start();
+	}
+	
 	public Jsfile()
 	{
         this.factory = new ScriptEngineManager();
