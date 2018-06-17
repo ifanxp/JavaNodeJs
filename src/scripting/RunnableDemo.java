@@ -18,12 +18,17 @@ class RunnableDemo implements Runnable {
 	      callback = _callback;
 	      args = _args;
 	   }
+	   
+	   public void clear()
+	   {
+		   Thread.interrupted();
+	   }
 
 	   public void run() {
 	      try {
-	         Thread.sleep(this.duration);
+	    	  Thread.sleep(this.duration);
 	      }catch (InterruptedException e) {
-	         System.out.println("Thread " +  threadName + " interrupted.");
+	          System.out.println("Thread " +  threadName + " interrupted.");
 	      }
 
 	      if (this.callback != null && this.callback.isFunction())

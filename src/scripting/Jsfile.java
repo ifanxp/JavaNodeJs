@@ -5,6 +5,8 @@ import jdk.nashorn.api.scripting.JSObject;
 
 import java.util.Map;
 import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 import java.io.FileReader;
 import java.io.BufferedReader;
 
@@ -12,16 +14,24 @@ public class Jsfile {
 	public ScriptEngineManager factory;
 	public ScriptEngine engine;
 	public Map<String, Object> files;
+	public List<RunnableDemo> Timers = new ArrayList<RunnableDemo>();
 	
 	public void printType(Object object)
 	{
 		System.out.println(object.getClass().getSimpleName());
 	}
 	
-	public void setTimeOut(int duration, JSObject callback, Object... args)
+	public int setTimeOut(int duration, JSObject callback, Object... args)
 	{
 		RunnableDemo R1 = new RunnableDemo( "Thread-1", duration, callback, args);
+		Timers.add(R1);
 		R1.start();
+		return Timers.size();
+	}
+	
+	public void clearTimeOut(int id)
+	{
+		Timers.get(id - 1).clear();
 	}
 	
 	public Jsfile()

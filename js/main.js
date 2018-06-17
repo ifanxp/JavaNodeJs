@@ -10,5 +10,7 @@ $Context.printType(sayhello);
 
 //$Context.calltest(sayhello);
 //$Context.setTimeOut(5000, sayhello);
-$Context.setTimeOut(0, sayhello, "ifan");
+var timierid = $Context.setTimeOut(5000, sayhello, "ifan");
+print(timierid);
 print('Line 13');
+$Context.clearTimeOut(timierid);
