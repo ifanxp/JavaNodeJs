@@ -59,7 +59,7 @@ public class JavaScriptContext {
 	
 	public int setTimeOut(int duration, JSObject callback, Object... args)
 	{
-		Thread t1 = new Thread(new RunnableDemo( "Thread-" + Timers.size(), duration, callback, args));
+		Thread t1 = new Thread(new Timer( "Thread-" + Timers.size(), duration, callback, args));
 		Timers.add(t1);
 		t1.start();
 		return Timers.size();
@@ -72,7 +72,7 @@ public class JavaScriptContext {
 
 	public int setInterval(int duration, JSObject callback, Object... args)
 	{
-		Thread t1 = new Thread(new RunnableDemo( "Thread-" + Timers.size(), duration, callback, args, true));
+		Thread t1 = new Thread(new Timer( "Thread-" + Timers.size(), duration, callback, args, true));
 		t1.start();
 		Timers.add(t1);
 		return Timers.size();
