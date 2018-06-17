@@ -8,7 +8,6 @@ class RunnableDemo implements Runnable {
 	   private Object[] args;
 	   private int duration;
 	   private boolean forever;
-	   private boolean cleared = false;
 	   
 	   RunnableDemo( String name) {
 	      threadName = name;
@@ -29,21 +28,11 @@ class RunnableDemo implements Runnable {
 	      forever = _forever;
 	   }
 	   
-	   public void clear()
-	   {
-		   System.out.println("clear()");
-		   this.cleared = true;
-	   }
-
 	   public void run() {
 		   while (true)
 		   {
 		      try {
 		    	  Thread.sleep(this.duration);
-		    	  if (this.cleared) {
-		    		  System.out.println("Thread " +  threadName + " cleared.");
-		    		  return;
-		    	  }
 		      }catch (InterruptedException e) {
 		          System.out.println("Thread " +  threadName + " interrupted.");
 		          return;

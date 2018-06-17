@@ -6,17 +6,17 @@ function sayhello(name) {
     print("hello "+name);
 }
 
-$Context.printType(sayhello);
+global.printType(sayhello);
 
-//$Context.calltest(sayhello);
-//$Context.setTimeOut(5000, sayhello);
-var timierid = $Context.setTimeOut(5000, sayhello, "ifan");
+//global.calltest(sayhello);
+//global.setTimeOut(5000, sayhello);
+var timierid = global.setTimeOut(5000, sayhello, "ifan");
 print(timierid);
 print('Line 13');
-$Context.clearTimeOut(timierid);
+global.clearTimeOut(timierid);
 
 
-var intvid = $Context.setInterval(1000, sayhello, "interval");
-$Context.setTimeOut(10000, function(id){
-    $Context.clearTimeOut(id);
+var intvid = global.setInterval(1000, sayhello, "interval");
+global.setTimeOut(10000, function(id){
+    global.clearTimeOut(id);
 }, intvid);
