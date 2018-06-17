@@ -23,13 +23,26 @@ public class Jsfile {
 	
 	public int setTimeOut(int duration, JSObject callback, Object... args)
 	{
-		RunnableDemo R1 = new RunnableDemo( "Thread-1", duration, callback, args);
+		RunnableDemo R1 = new RunnableDemo( "Thread-" + Timers.size(), duration, callback, args);
 		Timers.add(R1);
 		R1.start();
 		return Timers.size();
 	}
 	
 	public void clearTimeOut(int id)
+	{
+		Timers.get(id - 1).clear();
+	}
+
+	public int setInterval(int duration, JSObject callback, Object... args)
+	{
+		RunnableDemo R1 = new RunnableDemo( "Thread-" + Timers.size(), duration, callback, args, true);
+		Timers.add(R1);
+		R1.start();
+		return Timers.size();
+	}
+	
+	public void clearInterval(int id)
 	{
 		Timers.get(id - 1).clear();
 	}

@@ -14,3 +14,9 @@ var timierid = $Context.setTimeOut(5000, sayhello, "ifan");
 print(timierid);
 print('Line 13');
 $Context.clearTimeOut(timierid);
+
+
+var intvid = $Context.setInterval(1000, sayhello, "interval");
+$Context.setTimeOut(10000, function(id){
+    $Context.clearTimeOut(id);
+}, intvid);
